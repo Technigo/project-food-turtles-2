@@ -40,14 +40,14 @@ fetch(apiUrl, apiKey)
 
 
   restaurantInfo.forEach((restaurant) => {
-    burgerPlace.innerHTML += `<h3>${restaurant.name}<h3>`;
+    burgerPlace.innerHTML += `<div><h3>${restaurant.name}<h3>`;
     burgerPlace.innerHTML += `<img src="${restaurant.thumb}"/>`;
     burgerPlace.innerHTML += `<p>${restaurant.location}</p>`;
     burgerPlace.innerHTML += `<p>${restaurant.rating}</p>`;
     burgerPlace.innerHTML += `<p>${restaurant.ratingtext}</p>`;
     burgerPlace.innerHTML += `<p>${restaurant.cost}</p>`;
     burgerPlace.innerHTML += `<p>${restaurant.bookTable}</p>`; //value 0?
-    burgerPlace.innerHTML += `<p>${restaurant.delivery}</p>`; //value 0?
+    burgerPlace.innerHTML += `<p>${restaurant.delivery}</p></div>`; //value 0?
   });
   });
 
