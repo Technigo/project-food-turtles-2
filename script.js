@@ -25,8 +25,8 @@ fetch(apiUrl, apiKey)
     const ratingtext = restaurant.restaurant.user_rating.rating_text;
     const cost = restaurant.restaurant.average_cost_for_two;
     const thumb = restaurant.restaurant.thumb;
-    const delivery  = restaurant.restaurant.has_online_delivery;
-    const bookTable = restaurant.restaurant.has_table_booking;
+    const delivery  = restaurant.restaurant.has_online_delivery; // value 0?
+    const bookTable = restaurant.restaurant.has_table_booking; //value 0?
     
 
     return { name, location, rating, ratingtext, cost, thumb, bookTable, delivery};
@@ -46,8 +46,8 @@ fetch(apiUrl, apiKey)
     burgerPlace.innerHTML += `<p>${restaurant.rating}</p>`;
     burgerPlace.innerHTML += `<p>${restaurant.ratingtext}</p>`;
     burgerPlace.innerHTML += `<p>${restaurant.cost}</p>`;
-    burgerPlace.innerHTML += `<p>${restaurant.bookTable}</p>`;
-    burgerPlace.innerHTML += `<p>${restaurant.delivery}</p>`;
+    burgerPlace.innerHTML += `<p>${restaurant.bookTable}</p>`; //value 0?
+    burgerPlace.innerHTML += `<p>${restaurant.delivery}</p>`; //value 0?
   });
   });
 
