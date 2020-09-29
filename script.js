@@ -16,6 +16,7 @@ fetch(apiUrl, apiKey)
   .then((response) => response.json())
 
 .then((json) => {
+  console.log(json)
 
   const restaurantInfo = json.restaurants.map(restaurant => {
     const name = restaurant.restaurant.name;
@@ -24,9 +25,11 @@ fetch(apiUrl, apiKey)
     const ratingtext = restaurant.restaurant.user_rating.rating_text;
     const cost = restaurant.restaurant.average_cost_for_two;
     const thumb = restaurant.restaurant.thumb;
+    const delivery  = restaurant.restaurant.has_online_delivery;
+    const bookTable = restaurant.restaurant.has_table_booking;
+    
 
-
-    return { name, location, rating, ratingtext, cost, thumb };
+    return { name, location, rating, ratingtext, cost, thumb, bookTable, delivery};
     // burgerPlace.innerHTML += `<article>`;
     // burgerPlace.innerHTML += `<h3>${name}</h3>`;
     // burgerPlace.innerHTML += `</article>`;
@@ -42,31 +45,53 @@ fetch(apiUrl, apiKey)
     burgerPlace.innerHTML += `<p>${restaurant.location}</p>`;
     burgerPlace.innerHTML += `<p>${restaurant.rating}</p>`;
     burgerPlace.innerHTML += `<p>${restaurant.ratingtext}</p>`;
-    burgerPlace.innerHTML += `<p>${restaurant.cost}</p>`
+    burgerPlace.innerHTML += `<p>${restaurant.cost}</p>`;
+    burgerPlace.innerHTML += `<p>${restaurant.bookTable}</p>`;
+    burgerPlace.innerHTML += `<p>${restaurant.delivery}</p>`;
+  });
   });
 
 
-  // Anna
+ // Emma: ListReviews, latest three reviews from Charm City Burger Company
 
+ const restID = 16927784; //Name: Charm City Burger Company
+ const restUrl = `https://developers.zomato.com/api/v2.1/reviews?res_id=${restID}`;
+ 
+ const reviewsSection = document.getElementById('reviews-section');
+ 
+ // Fetching information about 
+ fetch(restUrl, apiKey)
+   .then((response) => response.json())
+ 
+ .then((json) => {
+   console.log(json)
+ 
+   const specificReview = json.user_reviews.map(review => {
+     const rating = review.review.rating;
+     const reviewText = review.review.review_text;
+     const ratingText = review.review.rating_text;
+     const reviewTime = review.review.review_time_friendly;
+     const reviewerName = review.review.user.name;
 
+ 
+     return { rating, reviewText, ratingText, reviewTime, reviewerName };
+   })
+   
 
-  // Emma
+   specificReview.splice(3);
+   console.log(specificReview);
+   
+   specificReview.forEach((review) => {
+     burgerPlace.innerHTML += `<p>${review.rating}<p>`;
+     burgerPlace.innerHTML += `<p>${review.reviewText}</p>`;
+     burgerPlace.innerHTML += `<p>${review.ratingText}</p>`;
+     burgerPlace.innerHTML += `<p>${review.reviewTime}</p>`;
+     burgerPlace.innerHTML += `<p>${review.reviewerName}</p>`;
+   });
+   });
 
-
-  // Mats
-
-
-
-});
-
-
-
+/*
 // Anna
-
-
-
-// Emma
-
 
 // Mats
 
@@ -120,4 +145,5 @@ fetch(apiUrl, apiKey)
 //                 books[index].querySelector('.description').innerText = item.description;
 //             });
 //         });
-// }
+}}
+*/
