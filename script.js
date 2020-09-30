@@ -47,6 +47,12 @@ fetch(apiUrl, apiKey)
 
 
   // Anna
+    // Sorts the restaurantInfo-array highest->lowest
+    const sortedRestaurantInfo = restaurantInfo.sort((a, b) => a.cost - b.cost);
+    console.log(sortedRestaurantInfo)
+    // Reverse the sortedRestaurantInfo price lowest-> highest
+    const reversedSorting = sortedRestaurantInfo.reverse();
+    console.log(reversedSorting);
 
 
 
