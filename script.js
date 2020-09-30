@@ -64,13 +64,11 @@ fetch(apiUrl, apiKey)
 const generateHTML = (restaurant) => {
   let burgerHTML = '';
   burgerHTML += `<article class="burger-place">`;
-
   burgerHTML += `<img src="${restaurant.thumb}"/>`;
   burgerHTML += `<h3>${restaurant.name}</h3>`;
-  burgerHTML += `<p>Adress: ${restaurant.location}</p>`;
-  burgerHTML += `<p>&#11088; Rating: ${restaurant.rating}</p>`;
-  burgerHTML += `<p>${restaurant.ratingtext} </p>`;
-  burgerHTML += `<p>Average cost: ${restaurant.cost} $</p>`;
+  burgerHTML += `<p>&#127828; Adress: ${restaurant.location}</p>`;
+  burgerHTML += `<p>&#11088; Rating: ${restaurant.rating} | ${restaurant.ratingtext}</p>`;
+  burgerHTML += `<p>&#128184; Average cost: ${restaurant.cost} $</p>`;
   burgerHTML += `</article>`;
 
   return burgerHTML;
