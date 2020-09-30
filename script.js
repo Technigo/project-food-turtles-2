@@ -11,14 +11,15 @@ const apiKey = {
 
 const burgerPlace = document.getElementById('restaurant-section');
 
+
+
 // Fetching information about burger restaurants in Miami
 fetch(apiUrl, apiKey)
   .then((response) => response.json())
 
 .then((json) => {
-  console.log(json)
 
-  const restaurantInfo = json.restaurants.map(restaurant => {
+    const restaurantInfo = json.restaurants.map(restaurant => {
     const name = restaurant.restaurant.name;
     const location = restaurant.restaurant.location.address;
     const rating = restaurant.restaurant.user_rating.aggregate_rating;
@@ -28,18 +29,18 @@ fetch(apiUrl, apiKey)
     
 
     return { name, location, rating, ratingtext, cost, thumb};
-    // burgerPlace.innerHTML += `<article>`;
-    // burgerPlace.innerHTML += `<h3>${name}</h3>`;
-    // burgerPlace.innerHTML += `</article>`;
 
   })
-
-  console.log(restaurantInfo)
-
 
   restaurantInfo.forEach((restaurant) => {
     burgerPlace.innerHTML += generateHTML(restaurant);
   });
+    
+    
+    
+    
+    
+     //document.getElementById('filterPrice').onclick = pickFilteredArray(restaurantInfo);
   });
 
   const generateHTML = (restaurant) => {
@@ -57,7 +58,25 @@ fetch(apiUrl, apiKey)
   }
 
 
- // Emma: ListReviews, latest three reviews from Charm City Burger Company
+// const pickFilteredArray = (restaurantInfo) => {
+//         alert('hej')
+//         const budget = document.getElementById('budget').value;
+//         let filteredArray = [];
+
+//         if (budget < 1000) {
+//             alert('Hej');
+//     } else if (budget < 100) {
+//      fi
+//     } else if (budget < 150) {
+//         const filteredArray = restaurantInfo.filter(cost => cost > 150)
+//     return filteredArray 
+//     } else {
+//         const filteredArray = restaurantInfo.filter(cost => cost > 200)
+//     return filteredArray 
+//         }  
+//     }
+
+  // Emma: ListReviews, latest three reviews from Charm City Burger Company
 
  const restID = 16927784; //Name: Charm City Burger Company
  const restUrl = `https://developers.zomato.com/api/v2.1/reviews?res_id=${restID}`;
