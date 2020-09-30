@@ -1,6 +1,6 @@
+//Variables for API
 const cityID = 291;
 const cuisineID = 168;
-
 const apiUrl = `https://developers.zomato.com/api/v2.1/search?entity_id=${cityID}&entity_type=city&cuisines=${cuisineID}`;
 
 const apiKey = {
@@ -9,9 +9,8 @@ const apiKey = {
   }
 };
 
+// Connecting our js with the restaurant-section in index.html
 const burgerPlace = document.getElementById('restaurant-section');
-
-
 
 // Fetching information about burger restaurants in Miami
 fetch(apiUrl, apiKey)
@@ -56,11 +55,9 @@ fetch(apiUrl, apiKey)
         burgerPlace.innerHTML += generateHTML(restaurant);
     })
 }
+});
 
-    
-
-    });
-
+//Generating html for restaurants
 const generateHTML = (restaurant) => {
   let burgerHTML = '';
   burgerHTML += `<article class="burger-place">`;
@@ -74,9 +71,5 @@ const generateHTML = (restaurant) => {
   return burgerHTML;
 }
 
-
+// Calling the sort on price button
 document.getElementById('sortOnPrice').onclick = sortOnPrice;
-
-
-
-

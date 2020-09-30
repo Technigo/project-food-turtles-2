@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +11,16 @@
 </head>
 
 <body>
+  <header class="navbar"> <!-- Logo and navbar -->
+    <a href="index.html" class="logo"><img class="logo" src="./img/logo.png" alt="logo"/></a>
+    <h3> Food finder &#127839; </h3>
+    <ul class="main-nav">
+      <li><a href="#">Sign in</a></li>
+      <li><a href="#">Subscribe</a></li>
+    </ul>
+  </header> 
+
+  <hr class="divider"> </hr>
 
   <div class="hero-image">
     <div class="hero-text">
@@ -19,24 +28,27 @@
       <p class="ingress">Find your favourite burger!</p>
     </div>
   </div>
+
+  <h2>Find your restaurant</h2>
+  <hr class="divider"> </hr>
+
+  <main class="main">
   <section class="filtering" id="filtering">
     <form>
       <label>Choose your budget:</label>
       <select class="select" id="budget">
-              <option value="small">0-50</option>
-              <option value="medium">51-100</option>
-              <option value="large">101-150</option>
-              <option value="xlarge">151-200</option>
-          </select>
-
+        <option value="small">0-50</option>
+        <option value="medium">51-100</option>
+        <option value="large">101-150</option>
+        <option value="xlarge">151-200</option>
+      </select>
     </form>
     <button onclick="pickFilteredArray()" id="filterPrice">Choose budget</button>
-
     <button id="sortOnPrice">Sort on price</button>
-
   </section>
 
-  <section class="restaurant-section" id="restaurant-section">
+  <section class="restaurant-section" id="restaurant-section"> 
+  
   </section>
 
   <!-- <section class="reviews-section" id="reviews-section">
@@ -44,7 +56,12 @@
   </section>
   -->
 
-  <script src="script.js"></script>
-</body>
 
+<footer class="footer"> 
+  <p class="footer-text"> Week 7 project by Anna Hellkvist | Mats Johanssen | Emma Urman | Technigo fall Bootcamp 2020</p>
+</footer>
+</main>
+
+<script src="script.js"></script>
+</body>
 </html>
