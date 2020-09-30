@@ -25,11 +25,9 @@ fetch(apiUrl, apiKey)
     const ratingtext = restaurant.restaurant.user_rating.rating_text;
     const cost = restaurant.restaurant.average_cost_for_two;
     const thumb = restaurant.restaurant.thumb;
-    const delivery  = restaurant.restaurant.has_online_delivery; // value 0?
-    const bookTable = restaurant.restaurant.has_table_booking; //value 0?
     
 
-    return { name, location, rating, ratingtext, cost, thumb, bookTable, delivery};
+    return { name, location, rating, ratingtext, cost, thumb};
     // burgerPlace.innerHTML += `<article>`;
     // burgerPlace.innerHTML += `<h3>${name}</h3>`;
     // burgerPlace.innerHTML += `</article>`;
@@ -40,16 +38,23 @@ fetch(apiUrl, apiKey)
 
 
   restaurantInfo.forEach((restaurant) => {
-    burgerPlace.innerHTML += `<div><h3>${restaurant.name}<h3>`;
-    burgerPlace.innerHTML += `<img src="${restaurant.thumb}"/>`;
-    burgerPlace.innerHTML += `<p>${restaurant.location}</p>`;
-    burgerPlace.innerHTML += `<p>${restaurant.rating}</p>`;
-    burgerPlace.innerHTML += `<p>${restaurant.ratingtext}</p>`;
-    burgerPlace.innerHTML += `<p>${restaurant.cost}</p>`;
-    burgerPlace.innerHTML += `<p>${restaurant.bookTable}</p>`; //value 0?
-    burgerPlace.innerHTML += `<p>${restaurant.delivery}</p></div>`; //value 0?
+    burgerPlace.innerHTML += generateHTML(restaurant);
   });
   });
+
+  const generateHTML = (restaurant) => {
+    let burgerHTML = '';
+    burgerHTML += `<article class="burger-place">`;
+    burgerHTML += `<h3>${restaurant.name}<h3>`;
+    burgerHTML += `<img src="${restaurant.thumb}"/>`;
+    burgerHTML += `<p>${restaurant.location}</p>`;
+    burgerHTML += `<p>${restaurant.rating}</p>`;
+    burgerHTML += `<p>${restaurant.ratingtext}</p>`;
+    burgerHTML += `<p>${restaurant.cost}</p>`;
+    burgerHTML += `</article>`;
+
+    return burgerHTML;
+  }
 
 
  // Emma: ListReviews, latest three reviews from Charm City Burger Company

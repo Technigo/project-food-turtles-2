@@ -1,7 +1,6 @@
 /* Style for Project week 7, Technigo Bootcamp, Food review website */
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat&display=swap');
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,15 +22,16 @@ h3 {
   font-family: 'Lobster', cursive;
 }
 
+
 /* HERO IMAGE */
+
 .hero-image {
   /* Background effect on image */
   width: 100%;
   height: 600px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.31), rgba(0, 0, 0, 0.31)), url("./img/palmtrees.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.31), rgba(0, 0, 0, 0.31)), url("./img/burgers.JPG");
   background-repeat: no-repeat;
   background-size: cover;
-
   /* Position and center the image */
   background-position: center;
   background-repeat: no-repeat;
@@ -39,8 +39,11 @@ h3 {
   position: relative;
 }
 
+
 /* Place text in the middle of the image */
+
 .hero-text {
+  color: #ffff;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -48,11 +51,12 @@ h3 {
   transform: translate(-50%, -50%);
 }
 
+
 /* Style for restaurant section */
 
 .restaurant-section {
-background: #F1E438;
-padding: 50px;
+  background: #F1E438;
+  padding: 50px;
 }
 
 .burger-place {
