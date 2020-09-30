@@ -25,7 +25,13 @@ fetch(apiUrl, apiKey)
     const rating = restaurant.restaurant.user_rating.aggregate_rating;
     const ratingtext = restaurant.restaurant.user_rating.rating_text;
     const cost = restaurant.restaurant.average_cost_for_two;
-    const thumb = restaurant.restaurant.thumb;
+    let thumb = restaurant.restaurant.thumb;
+
+    if (thumb) {
+      thumb = restaurant.restaurant.thumb
+    } else {
+      thumb = "./img/burgerthumb.JPG"
+    }
 
     return { name, location, rating, ratingtext, cost, thumb };
 
