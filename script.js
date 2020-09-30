@@ -19,43 +19,43 @@ fetch(apiUrl, apiKey)
 
 .then((json) => {
 
-    const restaurantInfo = json.restaurants.map(restaurant => {
+  const restaurantInfo = json.restaurants.map(restaurant => {
     const name = restaurant.restaurant.name;
     const location = restaurant.restaurant.location.address;
     const rating = restaurant.restaurant.user_rating.aggregate_rating;
     const ratingtext = restaurant.restaurant.user_rating.rating_text;
     const cost = restaurant.restaurant.average_cost_for_two;
     const thumb = restaurant.restaurant.thumb;
-    
 
-    return { name, location, rating, ratingtext, cost, thumb};
+    return { name, location, rating, ratingtext, cost, thumb };
 
   })
 
   restaurantInfo.forEach((restaurant) => {
     burgerPlace.innerHTML += generateHTML(restaurant);
   });
-    
-    
-    
-    
-    
-     //document.getElementById('filterPrice').onclick = pickFilteredArray(restaurantInfo);
-  });
 
-  const generateHTML = (restaurant) => {
-    let burgerHTML = '';
-    burgerHTML += `<article class="burger-place">`;
-    burgerHTML += `<h3>${restaurant.name}<h3>`;
-    burgerHTML += `<img src="${restaurant.thumb}"/>`;
-    burgerHTML += `<p>${restaurant.location}</p>`;
-    burgerHTML += `<p>${restaurant.rating}</p>`;
-    burgerHTML += `<p>${restaurant.ratingtext}</p>`;
-    burgerHTML += `<p>${restaurant.cost}</p>`;
-    burgerHTML += `</article>`;
 
-    return burgerHTML;
-  }
+
+
+
+  //document.getElementById('filterPrice').onclick = pickFilteredArray(restaurantInfo);
+});
+
+const generateHTML = (restaurant) => {
+  let burgerHTML = '';
+  burgerHTML += `<article class="burger-place">`;
+
+  burgerHTML += `<img src="${restaurant.thumb}"/>`;
+  burgerHTML += `<h3>${restaurant.name}</h3>`;
+  burgerHTML += `<p>Adress: ${restaurant.location}</p>`;
+  burgerHTML += `<p>&#11088; Rating: ${restaurant.rating}</p>`;
+  burgerHTML += `<p>${restaurant.ratingtext} </p>`;
+  burgerHTML += `<p>Average cost: ${restaurant.cost} $</p>`;
+  burgerHTML += `</article>`;
+
+  return burgerHTML;
+}
 
 
 // const pickFilteredArray = (restaurantInfo) => {
@@ -76,45 +76,46 @@ fetch(apiUrl, apiKey)
 //         }  
 //     }
 
-  // Emma: ListReviews, latest three reviews from Charm City Burger Company
-
- const restID = 16927784; //Name: Charm City Burger Company
- const restUrl = `https://developers.zomato.com/api/v2.1/reviews?res_id=${restID}`;
- 
- const reviewsSection = document.getElementById('reviews-section');
- 
- // Fetching information about 
- fetch(restUrl, apiKey)
-   .then((response) => response.json())
- 
- .then((json) => {
-   console.log(json)
- 
-   const specificReview = json.user_reviews.map(review => {
-     const rating = review.review.rating;
-     const reviewText = review.review.review_text;
-     const ratingText = review.review.rating_text;
-     const reviewTime = review.review.review_time_friendly;
-     const reviewerName = review.review.user.name;
-
- 
-     return { rating, reviewText, ratingText, reviewTime, reviewerName };
-   })
-   
-
-   specificReview.splice(3);
-   console.log(specificReview);
-   
-   specificReview.forEach((review) => {
-     burgerPlace.innerHTML += `<p>${review.rating}<p>`;
-     burgerPlace.innerHTML += `<p>${review.reviewText}</p>`;
-     burgerPlace.innerHTML += `<p>${review.ratingText}</p>`;
-     burgerPlace.innerHTML += `<p>${review.reviewTime}</p>`;
-     burgerPlace.innerHTML += `<p>${review.reviewerName}</p>`;
-   });
-   });
-
 /*
+// Emma: ListReviews, latest three reviews from Charm City Burger Company
+
+const restID = 16927784; //Name: Charm City Burger Company
+const restUrl = `https://developers.zomato.com/api/v2.1/reviews?res_id=${restID}`;
+
+const reviewsSection = document.getElementById('reviews-section');
+
+// Fetching information about 
+fetch(restUrl, apiKey)
+  .then((response) => response.json())
+
+.then((json) => {
+  console.log(json)
+
+  const specificReview = json.user_reviews.map(review => {
+    const rating = review.review.rating;
+    const reviewText = review.review.review_text;
+    const ratingText = review.review.rating_text;
+    const reviewTime = review.review.review_time_friendly;
+    const reviewerName = review.review.user.name;
+
+
+    return { rating, reviewText, ratingText, reviewTime, reviewerName };
+  })
+
+
+  specificReview.splice(3);
+  console.log(specificReview);
+
+  specificReview.forEach((review) => {
+    burgerPlace.innerHTML += `<p>${review.rating}<p>`;
+    burgerPlace.innerHTML += `<p>${review.reviewText}</p>`;
+    burgerPlace.innerHTML += `<p>${review.ratingText}</p>`;
+    burgerPlace.innerHTML += `<p>${review.reviewTime}</p>`;
+    burgerPlace.innerHTML += `<p>${review.reviewerName}</p>`;
+  });
+});
+
+
 // Anna
 
 // Mats
@@ -171,4 +172,3 @@ fetch(apiUrl, apiKey)
 //         });
 }}
 */
- 
