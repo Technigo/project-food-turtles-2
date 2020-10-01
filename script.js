@@ -18,7 +18,7 @@ fetch(apiUrl, apiKey)
 
 .then((json) => {
 
-  const restaurantInfo = json.restaurants.map(restaurant => {
+    const restaurantInfo = json.restaurants.map(restaurant => {
     const name = restaurant.restaurant.name;
     const location = restaurant.restaurant.location.address;
     const rating = restaurant.restaurant.user_rating.aggregate_rating;
@@ -42,19 +42,50 @@ fetch(apiUrl, apiKey)
 
 
 
-// Sorts the restaurantInfo-array highest->lowest
+    // Sorts the restaurantInfo-array highest->lowest
     const sortedRestaurantInfo = restaurantInfo.sort((a, b) => a.cost - b.cost);
-    console.log(sortedRestaurantInfo)
-    // Reverse the sortedRestaurantInfo price lowest-> highest
-    // const reversedSorting = sortedRestaurantInfo.reverse();
-    // console.log('reversed:', reversedSorting);
 
-    const sortOnPrice = (sortedRestaurantInfo) => {
-        alert('hej')
-    sortedRestaurantInfo.forEach((restaurant) => {
-        burgerPlace.innerHTML += generateHTML(restaurant);
-    })
-}
+    // Function to sort price
+    const sortOnPrice = () => {
+        // Empty the burgerPlace HTML
+         burgerPlace.innerHTML = '';
+        sortedRestaurantInfo.forEach((restaurant) => { 
+             // Generate new HTML content
+            burgerPlace.innerHTML += generateHTML(restaurant);
+        })
+    }
+    
+    // Eventlistener for button sortOnPrice
+    document.getElementById('sortOnPrice').addEventListener('click', sortOnPrice);
+
+    // Creating filtered array to pick price range
+    const pickFilteredArray = () => {
+        const budget = +document.getElementById('budget').value;
+        // Empty the HTML content
+        burgerPlace.innerHTML = '';
+        // check choosen select value to restaurant average cost
+        if (budget === 50) {
+            // filters the restaurantInfo array on cost
+            const filteredArray = restaurantInfo.filter(object => object.cost < 51);
+            // Generates new HTML content with filtered array
+            filteredArray.forEach((restaurant) => {
+                burgerPlace.innerHTML += generateHTML(restaurant)
+            })
+        } else if (budget === 100) {
+            const filteredArray = restaurantInfo.filter(object => object.cost > 50 && object.cost < 101);
+            filteredArray.forEach((restaurant) => {
+                burgerPlace.innerHTML += generateHTML(restaurant)
+            })
+        } else {
+            const filteredArray = restaurantInfo.filter(object => object.cost > 100 );
+            filteredArray.forEach((restaurant) => {
+                burgerPlace.innerHTML += generateHTML(restaurant)
+            })
+        } 
+    };
+
+    // eventlistener for button filterPrice
+    document.getElementById('filterPrice').addEventListener('click', pickFilteredArray);
 });
 
 //Generating html for restaurants
@@ -71,5 +102,3 @@ const generateHTML = (restaurant) => {
   return burgerHTML;
 }
 
-// Calling the sort on price button
-document.getElementById('sortOnPrice').onclick = sortOnPrice;

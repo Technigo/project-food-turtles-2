@@ -37,14 +37,18 @@
     <form>
       <label>Choose your budget:</label>
       <select class="select" id="budget">
-        <option value="small">0-50</option>
-        <option value="medium">51-100</option>
-        <option value="large">101-150</option>
-        <option value="xlarge">151-200</option>
+        <option value="50">0-50</option>
+        <option value="100">51-100</option>
+        <option value="150">101-150</option>
       </select>
     </form>
-    <button onclick="pickFilteredArray()" id="filterPrice">Choose budget</button>
-    <button id="sortOnPrice">Sort on price</button>
+    
+    <button id="filterPrice">Choose budget</button>
+    <div>
+        <p>Sort all restaurants on price, lowest to highest</p>
+        <button id="sortOnPrice">Sort on price</button>
+    </div>
+    
   </section>
 
   <section class="restaurant-section" id="restaurant-section"> 
