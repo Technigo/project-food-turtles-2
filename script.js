@@ -54,9 +54,24 @@ fetch(apiUrl, apiKey)
             burgerPlace.innerHTML += generateHTML(restaurant);
         })
     }
-    
     // Eventlistener for button sortOnPrice
     document.getElementById('sortOnPrice').addEventListener('click', sortOnPrice);
+    
+
+    // Sorts the restaurantInfo-array highest->lowest
+    const sortedOnRating = restaurantInfo.sort((a, b) => a.rating - b.rating);
+     // Function to sort on rating
+     const sortOnRating = () => {
+         // Empty the burgerPlace HTML
+          burgerPlace.innerHTML = '';
+          sortedOnRating.forEach((restaurant) => { 
+              // Generate new HTML content
+             burgerPlace.innerHTML += generateHTML(restaurant);
+         })
+     }
+     // Eventlistener for button sortOnRating
+     document.getElementById('sortOnRating').addEventListener('click', sortOnRating);
+ 
 
     // Creating filtered array to pick price range
     const pickFilteredArray = () => {
