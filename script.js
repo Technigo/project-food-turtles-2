@@ -40,17 +40,17 @@ fetch(apiUrl, apiKey)
     burgerPlace.innerHTML += generateHTML(restaurant);
   });
     
-    console.log(restaurantInfo)
 
 
 
     // Sorts the restaurantInfo-array highest->lowest
-    
+  const sortedRestaurantInfo = [...restaurantInfo];
+  
     
 
     // Function to sort price
-    const sortOnPrice = () => {
-        const sortedRestaurantInfo = restaurantInfo.sort((a, b) => a.cost - b.cost); // WHY CANT THIS BE OUTSIDE OUR FUNCTION??!!! :)
+  const sortOnPrice = () => {
+      sortedRestaurantInfo.sort((a, b) => a.cost - b.cost); // WHY CANT THIS BE OUTSIDE OUR FUNCTION??!!! :)
         // Empty the burgerPlace HTML
          burgerPlace.innerHTML = '';
         sortedRestaurantInfo.forEach((restaurant) => { 
@@ -63,10 +63,12 @@ fetch(apiUrl, apiKey)
     
 
     // Sorts the restaurantInfo-array lowest -> highest
+  const sortedOnRating = [...restaurantInfo];
     
      // Function to sort on rating
     const sortOnRating = () => {
-         const sortedOnRating = restaurantInfo.sort((a, b) => a.rating - b.rating); // WHY CANT THIS BE OUTSIDE OUR FUNCTION??!!! :)
+      sortedOnRating.sort((a, b) => a.rating - b.rating); // WHY CANT THIS BE OUTSIDE OUR FUNCTION??!!! :)
+      console.log(sortedOnRating);
          // Empty the burgerPlace HTML
           burgerPlace.innerHTML = '';
           sortedOnRating.forEach((restaurant) => { 
